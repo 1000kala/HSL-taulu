@@ -1,7 +1,5 @@
 # HSL-taulu kotiin
 
-Joona Björkroth
-
 ## Projektin nimi ja määrittely, käyttäjä tarve ja hyöty
 
 Oma HSL-Taulu, jonka saa esimerkiksi Raspberry PI:llä ja pienellä näytöllä seinälle. Siinä näkyy itselleni ajankohtaisimpien HSL-linjojen lähtöajat, kuten HSL:än omissakin pysäkkikohtaisissa tauluissa. Kiireessä tai nopean lähdön tilanteessa ei tarvitse kuin vilkaista valmista taulua, jos tietää että tarvitsee taululla esiintyvää linjaa. Lisäksi taulussa voi olla lämpötila ja sään trendi.
