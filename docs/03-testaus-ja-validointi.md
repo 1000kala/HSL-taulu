@@ -4,8 +4,6 @@ Tähän tiedostoon kirjataan tehdyt testit ja niiden tulokset. Vaatimusten tarka
 
 ## Testauksen tilanne
 
-**Testituloksia ei ole vielä kirjattu.** Alla olevat testit ovat suunniteltuja tarkistuksia, eivät väitteitä ohjelman tämänhetkisestä toimivuudesta.
-
 | Vaatimustunniste | Suunniteltu tarkistus | Tila | Toteutunut tulos |
 | --- | --- | --- | --- |
 | V1 | Avaa taulu selaimessa ja tarkista, että lähtöajat päivittyvät ja muutokset näkyvät. | Testattu | Toimii  |
