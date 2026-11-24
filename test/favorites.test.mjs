@@ -5,20 +5,20 @@ import { demoFavorites } from '../demo.mjs';
 
 test('three requested groups are configured and named', () => {
   assert.deepEqual(FAVORITES.map(x => x.id),['bus59','metro','tram6']);
-  assert.equal(FAVORITES[0].stopCode,'H2180');
+  assert.equal(FAVORITES[0].stopCode,'H2179');
 });
-test('Junatie prefers confirmed H2180 platform and never guesses an HSL ID', () => {
+test('Junatie prefers confirmed H2179 platform and never guesses an HSL ID', () => {
   const result = chooseCandidateStops(FAVORITES[0],[
-    {gtfsId:'HSL:1234567',name:'Junatie',code:'H1111'},
-    {gtfsId:'HSL:7654321',name:'Junatie',code:'H2180'},
-    {gtfsId:'HSL:9000000',name:'Other',code:'H2180'}
+    {gtfsId:'HSL:1234567',name:'Junatie',code:'H2180'},
+    {gtfsId:'HSL:7654321',name:'Junatie',code:'H2179'},
+    {gtfsId:'HSL:9000000',name:'Other',code:'H2179'}
   ]);
   assert.equal(result.length,1);
   assert.equal(result[0].gtfsId,'HSL:7654321');
 });
 test('selects only bus 59 heading towards Malminkartano', () => {
   const board = FAVORITES[0];
-  const stops=[{name:'Junatie',code:'H2180',departures:[
+  const stops=[{name:'Junatie',code:'H2179',departures:[
     {line:'59',destination:'Herttoniemi',departure:'2026-11-24T15:05:00.000Z'},
     {line:'59',destination:'Malminkartano via Pasila',departure:'2026-11-24T15:02:00.000Z'},
     {line:'500',destination:'Munkkivuori',departure:'2026-11-24T15:06:00.000Z'},

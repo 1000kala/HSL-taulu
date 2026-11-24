@@ -12,7 +12,7 @@ globalThis.fetch = async (url, options) => {
   const body = JSON.parse(options.body);
   if (body.query.includes('SearchStops')) {
     const sample = {
-      'Junatie': [{ gtfsId:'HSL:1111111', name:'Junatie', code:'H2180' }],
+      'Junatie': [{ gtfsId:'HSL:1111111', name:'Junatie', code:'H2179' }],
       'Sörnäinen': [
         { gtfsId:'HSL:2222222', name:'Sörnäinen', code:'M2' },
         { gtfsId:'HSL:3333333', name:'Sörnäinen (M)', code:'H0312' },
@@ -32,7 +32,7 @@ globalThis.fetch = async (url, options) => {
       trip:{routeShortName:line}
     });
     const sample = {
-      'HSL:1111111': { gtfsId:'HSL:1111111',name:'Junatie', code:'H2180',stoptimesWithoutPatterns:[upcoming('59','Malminkartano',4),upcoming('59','Herttoniemi',5)] },
+      'HSL:1111111': { gtfsId:'HSL:1111111',name:'Junatie', code:'H2179',stoptimesWithoutPatterns:[upcoming('59','Malminkartano',4),upcoming('59','Herttoniemi',5)] },
       'HSL:2222222': { gtfsId:'HSL:2222222',name:'Sörnäinen', code:'M2',stoptimesWithoutPatterns:[upcoming('M1','Kivenlahti',2),upcoming('M2','Tapiola',4),upcoming('M1','Vuosaari',3)] },
       'HSL:3333333': { gtfsId:'HSL:3333333',name:'Sörnäinen (M)', code:'H0312',stoptimesWithoutPatterns:[upcoming('6','Eiranranta',3),upcoming('6','Arabia',8)] },
     };

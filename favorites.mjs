@@ -2,9 +2,9 @@
 export const FAVORITES = [
   {
     id: 'bus59', label: 'Bussi 59', place: 'Junatie', direction: 'Malminkartanoon',
-    stopQuery: 'Junatie', stopName: 'Junatie', stopCode: 'H2180',
+    stopQuery: 'Junatie', stopName: 'Junatie', stopCode: 'H2179',
     lines: ['59'], headsigns: ['malminkartano', 'sydänpuunpuisto'],
-    note: 'Junatie H2180 · Malminkartanon suunta'
+    note: 'Junatie H2179 · Malminkartanon suunta'
   },
   {
     id: 'metro', label: 'Metro M1 / M2', place: 'Sörnäinen', direction: 'Länteen',

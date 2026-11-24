@@ -22,11 +22,11 @@ Kun saat Digitransitin API-avaimen, lisää se paikalliseen `.env`-tiedostoon RE
 
 Kotitaulun ensisijainen näkymä on asetettu seuraaville lähdöille:
 
-- **59** Junatie (H2180) → **Malminkartano**. Huomioidaan myös uuden päätepysäkin nimi Sydänpuunpuisto.
+- **59** Junatie (H2179) → **Malminkartano**. Huomioidaan myös uuden päätepysäkin nimi Sydänpuunpuisto.
 - **M1 ja M2** Sörnäisten metroasema → **länteen**, eli Kivenlahden/Tapiolan (tai vastaavan läntisen päätepysäkin) suuntaan.
 - **Raitiovaunu 6** Sörnäinen (M) → **molemmat ajosuunnat**, koska pyydettyä laiturinumeroa 12 ei ole vielä varmistettu raitiovaunulaituriksi. Suunta näkyy rivin määränpäässä (Arabia tai Eiranranta).
 
-Kun Digitransitin API-avain saadaan, ohjelma hakee pysäkkien varsinaiset HSL-tunnukset nimellä ja suodattaa lähdöt linjan sekä määränpään perusteella. Raitiovaunun täsmällinen laituri ja koko reaaliaikaisen tietovirran toimivuus vaativat tarkistuksen oikealla API-yhteydellä. Pelkässä demotilassa näyttö on toimiva, mutta ajat ovat *keksittyjä esimerkkejä*.
+Kun Digitransitin API-avain on käytössä, ohjelma hakee pysäkkien varsinaiset HSL-tunnukset nimellä ja suodattaa lähdöt linjan sekä määränpään perusteella. Raitiovaunun täsmällinen laituri ja koko reaaliaikaisen tietovirran toimivuus vaativat tarkistuksen oikealla API-yhteydellä. Pelkässä demotilassa näyttö on toimiva, mutta ajat ovat *keksittyjä esimerkkejä*.
 
 ## Ohjelman ensimmäinen versio
 
@@ -73,4 +73,4 @@ Sama palvelin ja selaimen osoite toimivat Raspberry Pi:ssä, kun Node.js on asen
 - Digitransit Routing API v2: HSL:n aikataulut ja reaaliaikaennusteet. Aikataulu erotetaan ennusteesta tiedon perusteella.
 - Open-Meteo: Helsingin keskustan säätiedot. Sään sijainti ei ole käyttäjän tarkka kotiosoite.
 
-Projektin sovelluskoodin ensimmäinen versio voidaan testata paikallisesti, mutta **todellisia HSL-lähtöjä ei ole vahvistettu ilman käyttäjän omaa API-avainta**.
+Projektin sovelluskoodia voidaan testata paikallisesti. Todellisten HSL-lähtöjen toimivuus tarkistetaan erikseen oikealla API-yhteydellä.
