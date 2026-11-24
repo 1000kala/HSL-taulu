@@ -30,7 +30,7 @@ Kun Digitransitin API-avain on käytössä, ohjelma hakee pysäkkien varsinaiset
 
 ## Näkymän HSL-henkinen ulkoasu
 
-Sivulla on HSL:n siniseen pohjautuva vaalea ilme. Bussi 59 on merkitty sinisellä, metro M1/M2 oranssilla ja raitiovaunu 6 vihreällä. Yläosan **Seuraavat lähdöt** -yhteenvedossa näkyy jokaisen kolmen ryhmän aikaisin tuleva lähtö kellonaikoineen ja minuuttimäärineen. Lähtötiedot poimitaan samoista vastauksista kuin tarkemmat aikataulut; erillisiä rajapintakutsuja ei tarvita. Tämä on oma opiskelijaprojekti, ei HSL:n virallinen sivu.
+Sivulla on HSL:n siniseen pohjautuva vaalea ilme. Bussi 59 on merkitty sinisellä, metro M1/M2 oranssilla ja raitiovaunu 6 vihreällä. Yläosan **Seuraavat lähdöt** -yhteenvedossa näkyy jokaisen kolmen ryhmän aikaisin tuleva lähtö kellonaikoineen ja minuuttimäärineen. Lähtötiedot poimitaan samoista vastauksista kuin tarkemmat aikataulut; erillisiä rajapintakutsuja ei tarvita.
 
 ## Ohjelman ensimmäinen versio
 
