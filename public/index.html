@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#091b20">
-  <meta name="description" content="Oma HSL-lähtöaikataulu kotiin, ajantasaiset lähdöt ja sää yhdessä näkymässä.">
-  <title>HSL-taulu – Lähdöt kotiin</title>
+  <meta name="description" content="HSL-kotitaulu: Junatien 59, Sörnäisten länsimetrot M1 ja M2 sekä raitiovaunu 6.">
+  <title>HSL-taulu – Omat lähdöt</title>
   <link rel="stylesheet" href="/styles.css">
   <script src="/app.js" defer></script>
 </head>
@@ -18,8 +18,8 @@
 
     <section class="hero" aria-label="Näkymän tiedot">
       <div class="hero-intro">
-        <p class="eyebrow">OMAT PYSÄKIT <span class="eyebrow-accent">/</span> SEURAAVAT LÄHDÖT</p>
-        <h1>Minne<br><em>seuraavaksi?</em></h1>
+        <p class="eyebrow">OMAT LINJAT <span class="eyebrow-accent">/</span> SEURAAVAT LÄHDÖT</p>
+        <h1>Kohta<br><em>mennään.</em></h1>
         <p id="today" class="date-line">Päivitetään päivää…</p>
       </div>
       <div class="weather" aria-label="Sää Helsingissä">
@@ -29,37 +29,22 @@
       </div>
     </section>
 
+    <div id="demo-banner" class="demo-banner" role="status" hidden>
+      <strong>DEMO – EI OIKEITA LÄHTÖAIKOJA</strong>
+      <span>Alla olevat lähtöajat ovat keksittyjä esimerkkejä. API-avain ei ole käytössä.</span>
+    </div>
+
     <section class="board" aria-labelledby="board-heading">
       <div class="section-heading">
-        <div><p class="eyebrow">LIIKENNE <span class="eyebrow-accent">/</span> HSL</p><h2 id="board-heading">Lähtötaulu<span class="heading-period">.</span></h2></div>
+        <div><p class="eyebrow">LIIKENNE <span class="eyebrow-accent">/</span> HSL</p><h2 id="board-heading">Omat lähdöt<span class="heading-period">.</span></h2></div>
         <button id="refresh" class="refresh-button" type="button"><span aria-hidden="true">↻</span> Päivitä</button>
       </div>
-      <div id="message" role="status" aria-live="polite" class="message">Lähtöajat haetaan palvelimelta.</div>
-      <div class="board-head" aria-hidden="true"><span>LINJA / MÄÄRÄNPÄÄ</span><span>LÄHTEE</span><span>AIKAA</span></div>
-      <div id="departures" class="departures" aria-live="polite"></div>
+      <p id="message" role="status" aria-live="polite" class="message">Haetaan lähtöaikoja…</p>
+      <div id="favorite-boards" class="favorite-boards" aria-live="polite"></div>
       <div class="board-footer"><span id="last-updated">Viimeisin onnistunut päivitys: —</span><span>Automaattinen päivitys 30 s välein</span></div>
     </section>
 
-    <section class="settings" aria-labelledby="settings-title">
-      <div class="settings-heading"><div><p class="eyebrow">OMAN TAULUN ASETUKSET</p><h2 id="settings-title">Valitse pysäkit</h2></div><span class="settings-note">Tallentuu tähän selaimeen</span></div>
-      <div class="settings-layout">
-        <div>
-          <form id="search-form" class="search-form">
-            <label for="stop-search">Hae pysäkkiä nimellä</label>
-            <div class="input-with-button"><input id="stop-search" name="q" type="search" minlength="2" maxlength="80" placeholder="Esim. Hakaniemi" autocomplete="off" required><button type="submit">Hae</button></div>
-          </form>
-          <div id="search-results" class="search-results" aria-live="polite"></div>
-          <p class="field-help">Valitse hakutuloksista haluamasi pysäkit. Esimerkkipysäkkinä on Arkadian puisto.</p>
-        </div>
-        <div>
-          <label class="field-label" for="line-filter">Näytettävät linjat</label>
-          <input id="line-filter" type="text" placeholder="Kaikki (tai esim. 6, 7, 9)" autocomplete="off">
-          <p class="field-help">Tyhjä kenttä näyttää kaikki valittujen pysäkkien linjat. Erota linjanumerot pilkulla.</p>
-          <p class="field-label selected-title">Valitut pysäkit</p>
-          <div id="selected-stops" class="selected-stops"></div>
-        </div>
-      </div>
-    </section>
+    <div class="board-hint">Bussi 59: Junatie → Malminkartano · Metro M1/M2: Sörnäinen → länteen · Raitiovaunu 6: Sörnäinen (M), molemmat suunnat. Raitiovaunun laiturinumero 12 on vielä tarkistettava.</div>
     <footer class="footer"><span>HSL-taulu · Oma projekti</span><span>Aikataulut: <a href="https://www.digitransit.fi/" target="_blank" rel="noopener noreferrer">Digitransit</a> · Sää: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></span></footer>
   </main>
 </body>

@@ -1,9 +1,11 @@
 import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { existsSync, readFileSync } from 'node:fs';
-import { dirname, extname, join, normalize, sep } from 'node:path';
+import { dirname, extname, join, normalize, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { normalizeStops, validateStopIds } from './logic.mjs';
+import { demoStopSearch, demoDepartures, demoFavorites } from './demo.mjs';
+import { FAVORITES, chooseCandidateStops, selectBoardDepartures } from './favorites.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const PUBLIC = join(ROOT, 'public');
@@ -23,6 +25,12 @@ function loadEnv() {
   }
 }
 loadEnv();
+
+function isDemoMode() {
+  const key = process.env.DIGITRANSIT_API_KEY?.trim();
+  if (process.env.HSL_DEMO_MODE === '1') return true;
+  return process.env.HSL_DEMO_MODE !== '0' && (!key || key === 'liitä_oma_avain_tähän');
+}
 
 const queryDepartures = `query DepartureBoard($ids: [String]) {
   stops(ids: $ids) {
@@ -116,10 +124,34 @@ export function createApp() {
     if (req.method !== 'GET') return json(res, 405, { error: 'Vain GET-pyynnöt ovat sallittuja.' });
     try {
       if (url.pathname === '/api/status') {
-        return json(res, 200, { configured: Boolean(process.env.DIGITRANSIT_API_KEY && process.env.DIGITRANSIT_API_KEY !== 'liitä_oma_avain_tähän'), serverTime: new Date().toISOString() });
+        return json(res, 200, { configured: Boolean(process.env.DIGITRANSIT_API_KEY && process.env.DIGITRANSIT_API_KEY !== 'liitä_oma_avain_tähän'), demo: isDemoMode(), serverTime: new Date().toISOString() });
+      }
+      if (url.pathname === '/api/favorites') {
+        if (isDemoMode()) return json(res, 200, { demo: true, updatedAt: new Date().toISOString(), boards: demoFavorites() });
+        const boards = await Promise.all(FAVORITES.map(async board => {
+          try {
+            const results = await cached('favorites:search:' + board.id, 60000, async () => {
+              const response = await apiRequest(queryStops, { name: board.stopQuery });
+              return response?.stops ?? [];
+            });
+            const matches = chooseCandidateStops(board, results);
+            if (!matches.length) return { ...board, departures: [], warning: 'Pysäkkiä ei löytynyt Digitransitista. Tarkista pysäkki HSL:n reittioppaasta.' };
+            const ids = matches.map(stop => stop.gtfsId);
+            const stops = await cached('favorites:departures:' + ids.join(','), 15000, async () => {
+              const response = await apiRequest(queryDepartures, { ids });
+              return response?.stops ?? [];
+            });
+            return { id: board.id, label: board.label, place: board.place, direction: board.direction, note: board.note,
+              departures: selectBoardDepartures(board, normalizeStops(stops)) };
+          } catch(error) {
+            return { id: board.id, label: board.label, place: board.place, direction: board.direction, note: board.note, departures: [], warning: error.message };
+          }
+        }));
+        return json(res, 200, { demo: false, updatedAt: new Date().toISOString(), boards });
       }
       if (url.pathname === '/api/departures') {
         const ids = validateStopIds(url.searchParams.get('ids'));
+        if (isDemoMode()) return json(res, 200, { demo: true, updatedAt: new Date().toISOString(), stops: demoDepartures(ids) });
         const key = 'departures:' + ids.join(',');
         const stops = await cached(key, 15000, async () => {
           const response = await apiRequest(queryDepartures, { ids });
@@ -130,6 +162,7 @@ export function createApp() {
       if (url.pathname === '/api/search') {
         const name = (url.searchParams.get('q') || '').trim();
         if (name.length < 2 || name.length > 80) return json(res, 400, { error: 'Kirjoita vähintään kaksi merkkiä.' });
+        if (isDemoMode()) return json(res, 200, { demo: true, stops: demoStopSearch(name) });
         const stops = await cached('search:' + name.toLocaleLowerCase('fi'), 60000, async () => {
           const response = await apiRequest(queryStops, { name });
           return response?.stops ?? [];
@@ -146,7 +179,7 @@ export function createApp() {
   });
 }
 
-if (process.argv[1] && fileURLToPath(import.meta.url) === join(process.cwd(), process.argv[1])) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   const port = Number(process.env.PORT) || 3000;
   const host = process.env.HOST || '127.0.0.1';
   createApp().listen(port, host, () => console.log(`HSL-taulu: http://${host}:${port}`));

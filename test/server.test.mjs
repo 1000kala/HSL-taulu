@@ -17,13 +17,24 @@ test('serves the home page without dependencies', async () => {
   assert.match(await response.text(), /HSL-taulu/);
 });
 
-test('rejects invalid stop ids and reports missing API key', async () => {
+test('rejects invalid stop ids and serves clearly labeled demo data without API key', async () => {
   const invalid = await fetch(origin + '/api/departures?ids=unsafe');
   assert.equal(invalid.status, 400);
   assert.match((await invalid.json()).error, /pysäkkitunnusta/);
   const missing = await fetch(origin + '/api/departures?ids=HSL%3A1040129');
-  assert.equal(missing.status, 503);
-  assert.match((await missing.json()).error, /API-avain/);
+  assert.equal(missing.status, 200);
+  const data = await missing.json();
+  assert.equal(data.demo, true);
+  assert.ok(data.stops[0].departures.length > 1);
+});
+
+test('favorites endpoint serves three requested routes as labeled demo', async () => {
+  const response = await fetch(origin + '/api/favorites');
+  assert.equal(response.status, 200);
+  const body = await response.json();
+  assert.equal(body.demo,true);
+  assert.deepEqual(body.boards.map(x=>x.id),['bus59','metro','tram6']);
+  assert.ok(body.boards[0].departures.every(d=>d.line==='59'));
 });
 
 test('prevents traversal and does not expose the private key file', async () => {

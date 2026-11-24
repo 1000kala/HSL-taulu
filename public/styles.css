@@ -8,3 +8,30 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus
 .settings{margin-top:38px;border:1px solid var(--line);border-radius:20px;padding:28px 30px 32px;background:#0b2225}.settings-heading{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px}.settings-note{color:var(--muted);font-size:12px}.settings h2{font-size:26px}.settings-layout{display:grid;grid-template-columns:1fr 1fr;gap:36px}.field-label,.search-form label{display:block;font-size:14px;font-weight:700;margin-bottom:9px}.search-form .input-with-button{display:flex;gap:8px}input{width:100%;background:#081b1e;border:1px solid #436168;border-radius:9px;padding:12px 13px;color:var(--ink);min-width:0}input::placeholder{color:#76908e}.search-form button{background:var(--lime);color:#10231c;border:0;border-radius:9px;padding:11px 20px;font-weight:800}.search-form button:hover{background:#c7ff92}.field-help{font-size:12px;color:var(--muted);margin:10px 0 0}.search-results{margin-top:11px;max-height:215px;overflow:auto}.search-result{display:flex;justify-content:space-between;align-items:center;width:100%;gap:10px;text-align:left;border:1px solid #38565a;background:#123034;color:var(--ink);padding:10px 13px;margin-bottom:5px;border-radius:8px}.search-result:hover{background:#204045}.result-meta{font-size:12px;color:var(--subtle)}.selected-title{margin:22px 0 9px}.selected-stops{display:flex;gap:9px;flex-wrap:wrap}.stop-chip{background:#1b3d3d;display:flex;gap:10px;align-items:center;border:1px solid #46645d;border-radius:9px;padding:7px 7px 7px 12px;font-size:13px}.stop-chip button{border:0;background:#305454;color:#e8f7ee;border-radius:6px;padding:3px 9px;font-weight:800}.stop-chip button:hover{background:#467673}.footer{display:flex;justify-content:space-between;gap:15px;margin-top:35px;color:var(--muted);font-size:12px}.footer a{color:var(--subtle);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:750px){.shell{padding:18px 16px}.topbar{padding-bottom:17px}.brand-muted{font-size:10px}.top-right{gap:12px}.status-dot{font-size:11px}.clock{font-size:21px}.hero{grid-template-columns:1fr;gap:24px;padding:38px 0}.hero h1{font-size:68px}.weather{min-height:190px}.temperature{font-size:68px}.board-head,.departure{grid-template-columns:1fr 80px 68px;gap:8px;padding-left:15px;padding-right:15px}.board-head{font-size:9px}.section-heading{padding:21px 15px}.section-heading h2{font-size:27px}.message{padding-left:15px;padding-right:15px}.line-badge{min-width:47px;height:45px;font-size:20px}.dep-left{gap:9px}.dep-destination{font-size:15px}.dep-stop{font-size:10px}.dep-time{font-size:20px}.dep-minutes{font-size:19px}.dep-minutes small{display:block;margin-top:3px}.board-footer{padding:15px;flex-wrap:wrap}.settings{padding:23px 16px}.settings-layout{grid-template-columns:1fr;gap:28px}.settings-note{display:none}.footer{flex-direction:column;gap:5px}}
 @media(prefers-reduced-motion:no-preference){button{transition:background .12s ease,border-color .12s ease}}
+
+/* Demo status is conspicuous so sample times cannot be mistaken for real departures. */
+[hidden]{display:none!important}
+.demo-banner{margin:-10px 0 22px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;border:2px solid #ffd278;border-radius:12px;background:#3b2b15;color:#ffe5ae;padding:13px 18px;font-size:13px}
+.demo-banner strong{font-weight:800;letter-spacing:.04em}
+.status-dot.demo{color:#ffd278}
+.status-dot.demo:before{background:#ffd278}
+
+/* Henkilökohtaiset linjat / pysäkit */
+.favorite-boards{padding:0 18px 15px;display:grid;gap:17px}
+.favorite-panel{background:#102b2e;border:1px solid #345459;border-radius:15px;overflow:hidden}
+.favorite-heading{padding:17px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #365659;background:#19373b}
+.favorite-label{font:700 24px/1.15 'Space Grotesk',sans-serif;letter-spacing:-.035em}
+.favorite-detail{color:#bfd4d1;font-size:13px;margin-top:5px}
+.favorite-count{color:var(--lime);font-size:12px;font-weight:700;white-space:nowrap}
+.favorite-departure{display:grid;grid-template-columns:64px 1fr 90px 72px;gap:15px;align-items:center;min-height:64px;padding:10px 18px;border-bottom:1px solid #27464b}
+.favorite-line{background:var(--lime);color:#112d24;border-radius:7px;font:700 19px/1 'Space Grotesk',sans-serif;min-width:52px;text-align:center;padding:9px 3px}
+.favorite-destination{display:flex;flex-direction:column;min-width:0}
+.favorite-destination-name{font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.favorite-kind{font-size:11px;color:var(--muted)}
+.favorite-time{text-align:right;font:600 20px/1 'Space Grotesk',sans-serif;white-space:nowrap;font-variant-numeric:tabular-nums}
+.favorite-minutes{text-align:right;color:var(--lime);font:700 17px/1 'Space Grotesk',sans-serif;white-space:nowrap;font-variant-numeric:tabular-nums}
+.favorite-note{margin:0;padding:11px 18px;color:var(--subtle);font-size:12px}
+.favorite-warning{color:var(--danger);padding:8px 18px;margin:0}
+.favorite-empty{padding:24px 18px;color:var(--subtle)}
+.board-hint{font-size:13px;color:var(--subtle);line-height:1.6;margin:20px 3px}
+@media(max-width:750px){.favorite-boards{padding:0 9px 12px;gap:10px}.favorite-heading{padding:14px 12px}.favorite-label{font-size:20px}.favorite-detail{font-size:12px}.favorite-departure{grid-template-columns:46px 1fr 62px 51px;gap:7px;padding:10px 9px;min-height:64px}.favorite-line{min-width:42px;font-size:16px}.favorite-destination-name{font-size:13px}.favorite-time{font-size:17px}.favorite-minutes{font-size:13px}.favorite-note{padding:10px 12px}}
