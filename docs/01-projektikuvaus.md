@@ -27,7 +27,7 @@ Vähimmäiskokonaisuus on toimiva html, jossa näkyy selvästi haluamani linjoje
 Käytössä on Digitransitin API-rajapinnat jota julkaistaan Githubilla näkyväksi html muotoon. Digitransitin rajapinnoissa on vaatimuksena rekisteröiytymispakko sekä pyyntömäärien rajoituksia. Vikakoodi 403 voi tulla ylikuormituksesta.
 
 ## Merkittävät muutokset ja perustelut
-
+Demoversion luominen, joka toimii ilman API-avainta. Se piti luoda, koska en päässyt hetkeen kirjautumaan Digitransitiin ja hakemaan API-avaintani. Se toimii samalla projektitiedostolla kuin avaimellinenkin.
 ## Dokumentaation linkit
 
 - [AI-työskentely](02-ai-tyoskentely.md)
