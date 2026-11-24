@@ -20,6 +20,42 @@ function tick() {
   $('#clock').textContent = timeFormatter.format(now);
   $('#today').textContent = dateFormatter.format(now).replace(/^./, first => first.toUpperCase());
 }
+
+const QUICK_GROUPS = [
+  { id: 'bus59', title: 'Bussi 59', from: 'Junatie', line: '59' },
+  { id: 'metro', title: 'Metro M1 / M2', from: 'Sörnäinen', line: 'M1 / M2' },
+  { id: 'tram6', title: 'Raitiovaunu 6', from: 'Sörnäinen (M)', line: '6' },
+];
+function renderNextDepartures(boards) {
+  const container = $('#next-departures');
+  container.replaceChildren();
+  const now = Date.now();
+  QUICK_GROUPS.forEach(group => {
+    const board = boards.find(item => item.id === group.id);
+    const next = (board?.departures || [])
+      .filter(item => Number.isFinite(Date.parse(item.departure)) && Date.parse(item.departure) >= now)
+      .sort((a, b) => Date.parse(a.departure) - Date.parse(b.departure))[0];
+    const card = el('article', 'quick-card quick-' + group.id);
+    card.setAttribute('role', 'listitem');
+    const header = el('div','quick-card-head');
+    header.append(el('span','quick-name',group.title),el('span','quick-line',next?.line || group.line));
+    card.append(header, el('div','quick-stop',group.from));
+    if (next) {
+      const nextTime = Date.parse(next.departure);
+      const minutes = Math.max(0, Math.ceil((nextTime - now) / 60000));
+      const row = el('div','quick-main');
+      const clock = el('time','quick-time',timeFormatter.format(new Date(nextTime)));
+      clock.dateTime = next.departure;
+      row.append(clock,el('strong','quick-minutes',minutes === 0 ? 'Nyt' : minutes + ' min'));
+      card.append(row,el('p','quick-destination','→ ' + next.destination));
+    } else {
+      card.append(el('div','quick-no-time','—'),
+        el('p','quick-destination',board?.warning ? 'Lähtötietoja ei saatu' : board ? 'Ei tulevia lähtöjä' : 'Tietoja odotetaan'));
+    }
+    container.append(card);
+  });
+}
+
 function renderBoards(boards) {
   const container = $('#favorite-boards');
   container.replaceChildren();
@@ -27,6 +63,7 @@ function renderBoards(boards) {
   const now = Date.now();
   boards.forEach(board => {
     const panel = el('section', 'favorite-panel');
+    panel.classList.add('mode-' + board.id);
     const header = el('div', 'favorite-heading');
     const titles = el('div', 'favorite-titles');
     titles.append(el('div','favorite-label',board.label),el('div','favorite-detail',`${board.place} · ${board.direction}`));
@@ -66,6 +103,7 @@ async function loadFavorites() {
     if (request !== currentRequest) return;
     const isDemo = body.demo === true;
     $('#demo-banner').hidden = !isDemo;
+    renderNextDepartures(body.boards || []);
     renderBoards(body.boards || []);
     const errorCount = (body.boards || []).filter(board => board.warning).length;
     $('#message').textContent = isDemo
@@ -77,6 +115,7 @@ async function loadFavorites() {
     $('#last-updated').textContent = 'Viimeisin päivitys: ' + timeFormatter.format(new Date());
   } catch (error) {
     if (request !== currentRequest) return;
+    renderNextDepartures([]);
     $('#favorite-boards').replaceChildren(el('div','empty','Lähtöaikoja ei voi näyttää.'));
     $('#message').textContent = 'Tietojen ajantasaisuutta ei voida varmistaa: ' + error.message;
     $('#message').classList.add('error');

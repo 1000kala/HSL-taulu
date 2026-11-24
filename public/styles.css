@@ -35,3 +35,104 @@ button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus
 .favorite-empty{padding:24px 18px;color:var(--subtle)}
 .board-hint{font-size:13px;color:var(--subtle);line-height:1.6;margin:20px 3px}
 @media(max-width:750px){.favorite-boards{padding:0 9px 12px;gap:10px}.favorite-heading{padding:14px 12px}.favorite-label{font-size:20px}.favorite-detail{font-size:12px}.favorite-departure{grid-template-columns:46px 1fr 62px 51px;gap:7px;padding:10px 9px;min-height:64px}.favorite-line{min-width:42px;font-size:16px}.favorite-destination-name{font-size:13px}.favorite-time{font-size:17px}.favorite-minutes{font-size:13px}.favorite-note{padding:10px 12px}}
+
+
+/* HSL-henkinen ulkoasu: sininen yleisilme, kulkuvälineiden omat tunnusvärit.
+   Oma opiskelijaprojekti; ei HSL:n virallinen käyttöliittymä tai logo. */
+:root{
+  color-scheme:light;
+  --ink:#173447; --subtle:#526d7e; --muted:#647e8c;
+  --panel:#fff; --panel2:#fff; --line:#d7e5ec;
+  --lime:#007ac9; --background:#f1f7fa; --danger:#af2a4d;
+  --bus:#007ac9; --tram:#00985f; --metro:#ff6319;
+}
+body{background:var(--background);color:var(--ink);font-family:Arial,"Segoe UI",system-ui,sans-serif}
+.shell{max-width:1260px;padding:22px 30px 35px}
+.topbar{background:var(--bus);color:white;border:0;border-radius:15px;padding:17px 23px;box-shadow:0 6px 22px #007ac914}
+.brand{font-size:20px;letter-spacing:-.025em}
+.brand-icon{background:#fff;color:var(--bus);width:37px;height:37px;border-radius:10px}
+.brand-muted{color:#dbf1ff;font-size:11px;font-weight:600;letter-spacing:.07em}
+.topbar .status-dot{color:#fff}
+.topbar .status-dot:before{background:#fcda6e}
+.topbar .status-dot.ok:before{background:#a7edb9}
+.topbar .clock{font-family:Arial,"Segoe UI",sans-serif;font-size:25px;letter-spacing:-.03em}
+.hero{padding:34px 0 26px;grid-template-columns:1.55fr 1fr;align-items:center;gap:24px}
+.hero h1{font-family:Arial,"Segoe UI",sans-serif;font-size:clamp(40px,5.8vw,72px);line-height:1.05;letter-spacing:-.055em;margin:10px 0 15px;font-weight:800}
+.hero h1 em{color:var(--bus)}
+.eyebrow{color:#44748d;letter-spacing:.11em;font-size:12px}
+.eyebrow-accent{color:var(--bus)}
+.date-line{color:var(--subtle);font-size:16px}
+.weather{min-height:174px;padding:20px 24px;border:1px solid var(--line);background:#fff;border-radius:18px;box-shadow:0 4px 18px #174d6910}
+.weather-label{color:#4a7b99}
+.weather-symbol{font-size:32px}
+.temperature{font-family:Arial,"Segoe UI",sans-serif;font-weight:800;font-size:62px;letter-spacing:-.06em}
+.temperature span{color:var(--bus)}
+.weather-footer{color:var(--subtle);font-size:13px}
+.weather-trend{border:0;background:#e1f2fc;color:#005b95;font-weight:700}
+.demo-banner{margin:0 0 20px;background:#fff4da;color:#724c0d;border:1px solid #f6ca6b;border-left:5px solid #da9b16}
+.quick-section{margin:0 0 30px}
+.quick-title-row{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:15px}
+.quick-title-row h2{font:800 clamp(22px,2.8vw,30px)/1.15 Arial,"Segoe UI",sans-serif;letter-spacing:-.035em;margin:4px 0 0}
+.quick-refresh-note{color:var(--muted);font-size:12px;white-space:nowrap}
+.quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.quick-loading{grid-column:1/-1;color:var(--subtle)}
+.quick-card{--mode:var(--bus);background:white;border:1px solid var(--line);border-top:5px solid var(--mode);border-radius:14px;padding:19px 20px 17px;box-shadow:0 4px 14px #173f5410;min-width:0;min-height:194px}
+.quick-card.quick-metro{--mode:var(--metro)}
+.quick-card.quick-tram6{--mode:var(--tram)}
+.quick-card-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.quick-name{font-size:16px;font-weight:800}
+.quick-line{background:var(--mode);color:white;border-radius:9px;padding:5px 11px;font-size:15px;font-weight:800;white-space:nowrap;min-width:38px;text-align:center}
+.quick-stop{color:var(--subtle);font-size:13px;margin:6px 0 16px}
+.quick-main{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.quick-time{font-size:clamp(27px,3.3vw,43px);font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.05em}
+.quick-minutes{font-size:clamp(17px,2.1vw,25px);font-weight:800;color:var(--mode);white-space:nowrap}
+.quick-destination{font-size:13px;color:var(--subtle);margin:13px 0 0;overflow-wrap:anywhere}
+.quick-no-time{font-size:34px;font-weight:800;line-height:1.1}
+.board{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 4px 18px #174d690a}
+.section-heading{padding:23px 23px 18px}
+.section-heading h2{font-family:Arial,"Segoe UI",sans-serif;font-size:28px;letter-spacing:-.035em}
+.heading-period{color:var(--bus)}
+.refresh-button{border:0;background:var(--bus);color:#fff;font-size:14px;border-radius:30px;padding:11px 16px}
+.refresh-button:hover{background:#0063a8}
+.message{color:var(--subtle);padding:0 23px 15px}
+.favorite-boards{padding:0 16px 16px;gap:14px}
+.favorite-panel{background:#fff;border:1px solid var(--line);border-left:5px solid var(--bus);border-radius:13px}
+.favorite-panel.mode-metro{border-left-color:var(--metro)}
+.favorite-panel.mode-tram6{border-left-color:var(--tram)}
+.favorite-heading{background:#f0f8fd;border-bottom:1px solid var(--line);padding:16px 18px}
+.favorite-label{font-family:Arial,"Segoe UI",sans-serif;font-size:23px;letter-spacing:-.035em}
+.favorite-detail,.favorite-note{color:var(--subtle)}
+.favorite-count{color:var(--bus)}
+.favorite-departure{border-bottom:1px solid #edf2f5}
+.favorite-line{background:var(--bus);color:#fff;font-family:Arial,"Segoe UI",sans-serif;border-radius:10px}
+.mode-metro .favorite-line{background:var(--metro)}
+.mode-tram6 .favorite-line{background:var(--tram)}
+.favorite-minutes{color:#0069ad}
+.mode-metro .favorite-minutes{color:#c84d04}
+.mode-tram6 .favorite-minutes{color:#007a4e}
+.favorite-kind{color:var(--muted)}
+.favorite-note{background:#fcfdff}
+.board-footer{border-color:var(--line)}
+.board-hint{color:var(--subtle);margin-top:16px}
+.footer{border-top:1px solid var(--line);padding-top:18px}
+.footer a{color:var(--bus)}
+@media(max-width:780px){
+  .shell{padding:12px 12px 30px}
+  .topbar{padding:12px 14px}
+  .brand{font-size:16px}
+  .brand-muted{font-size:9px}
+  .hero{grid-template-columns:1fr;gap:16px;padding:27px 0 24px}
+  .hero h1{font-size:48px}
+  .weather{min-height:155px}
+  .temperature{font-size:58px}
+  .quick-grid{grid-template-columns:1fr}
+  .quick-card{min-height:auto;padding:16px 17px}
+  .quick-title-row{align-items:start}
+  .quick-title-row h2{font-size:22px}
+  .quick-refresh-note{display:none}
+  .quick-stop{margin-bottom:10px}
+  .quick-time{font-size:37px}
+  .quick-minutes{font-size:24px}
+  .section-heading{padding:20px 15px}
+  .favorite-boards{padding:0 9px 12px}
+}

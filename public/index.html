@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#091b20">
+  <meta name="theme-color" content="#007ac9">
   <meta name="description" content="HSL-kotitaulu: Junatien 59, Sörnäisten länsimetrot M1 ja M2 sekä raitiovaunu 6.">
   <title>HSL-taulu – Omat lähdöt</title>
   <link rel="stylesheet" href="/styles.css">
@@ -12,14 +12,14 @@
 <body>
   <main class="shell">
     <header class="topbar">
-      <div class="brand"><span class="brand-icon" aria-hidden="true">H</span><span>HSL<span class="brand-muted"> / KOTITAULU</span></span></div>
+      <div class="brand"><span class="brand-icon" aria-hidden="true">H</span><span>HSL-taulu<span class="brand-muted"> / OMA PROJEKTI</span></span></div>
       <div class="top-right"><span id="api-status" class="status-dot">Yhdistetään…</span><span id="clock" class="clock">--:--</span></div>
     </header>
 
     <section class="hero" aria-label="Näkymän tiedot">
       <div class="hero-intro">
         <p class="eyebrow">OMAT LINJAT <span class="eyebrow-accent">/</span> SEURAAVAT LÄHDÖT</p>
-        <h1>Kohta<br><em>mennään.</em></h1>
+        <h1>Omat <em>lähdöt.</em></h1>
         <p id="today" class="date-line">Päivitetään päivää…</p>
       </div>
       <div class="weather" aria-label="Sää Helsingissä">
@@ -34,6 +34,16 @@
       <span>Alla olevat lähtöajat ovat keksittyjä esimerkkejä. API-avain ei ole käytössä.</span>
     </div>
 
+    <section class="quick-section" aria-labelledby="quick-heading">
+      <div class="quick-title-row">
+        <div><p class="eyebrow">VILKAISE ENNEN LÄHTÖÄ</p><h2 id="quick-heading">Seuraava lähtö jokaiselta linjalta</h2></div>
+        <span class="quick-refresh-note">Päivittyy 30 sekunnin välein</span>
+      </div>
+      <div id="next-departures" class="quick-grid" role="list" aria-live="polite">
+        <p class="quick-loading">Haetaan seuraavia lähtöjä…</p>
+      </div>
+    </section>
+
     <section class="board" aria-labelledby="board-heading">
       <div class="section-heading">
         <div><p class="eyebrow">LIIKENNE <span class="eyebrow-accent">/</span> HSL</p><h2 id="board-heading">Omat lähdöt<span class="heading-period">.</span></h2></div>
@@ -44,7 +54,7 @@
       <div class="board-footer"><span id="last-updated">Viimeisin onnistunut päivitys: —</span><span>Automaattinen päivitys 30 s välein</span></div>
     </section>
 
-    <div class="board-hint">Bussi 59: Junatie → Malminkartano · Metro M1/M2: Sörnäinen → länteen · Raitiovaunu 6: Sörnäinen (M), molemmat suunnat. Raitiovaunun laiturinumero 12 on vielä tarkistettava.</div>
+    <div class="board-hint">Bussi 59: Junatie H2179 → Malminkartano/Sydänpuunpuisto · Metro M1/M2: Sörnäinen → länteen · Raitiovaunu 6: Sörnäinen (M) → Eiranranta.</div>
     <footer class="footer"><span>HSL-taulu · Oma projekti</span><span>Aikataulut: <a href="https://www.digitransit.fi/" target="_blank" rel="noopener noreferrer">Digitransit</a> · Sää: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></span></footer>
   </main>
 </body>
