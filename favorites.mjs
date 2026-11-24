@@ -13,10 +13,10 @@ export const FAVORITES = [
     note: 'Sörnäisten metroasema · kohti keskustaa ja Espoota'
   },
   {
-    id: 'tram6', label: 'Raitiovaunu 6', place: 'Sörnäinen (M)', direction: 'Molemmat suunnat',
+    id: 'tram6', label: 'Raitiovaunu 6', place: 'Sörnäinen (M)', direction: 'Eiranrantaan',
     stopQuery: 'Sörnäinen (M)', stopName: 'Sörnäinen (M)',
-    lines: ['6'], headsigns: [],
-    note: 'Laituri 12 tarkistamatta · näytetään linja 6 molempiin suuntiin'
+    lines: ['6'], headsigns: ['eiranranta'],
+    note: 'Sörnäinen (M) · vain Eiranrannan suunta'
   }
 ];
 

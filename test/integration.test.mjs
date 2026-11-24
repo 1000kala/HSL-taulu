@@ -85,6 +85,6 @@ test('live favorites resolve stop IDs and filter correct lines and directions', 
   assert.deepEqual(data.boards.map(x=>x.id),['bus59','metro','tram6']);
   assert.deepEqual(data.boards[0].departures.map(x=>x.destination),['Malminkartano']);
   assert.deepEqual(data.boards[1].departures.map(x=>x.line),['M1','M2']);
-  assert.deepEqual(data.boards[2].departures.map(x=>x.destination),['Eiranranta','Arabia']);
+  assert.deepEqual(data.boards[2].departures.map(x=>x.destination),['Eiranranta']);
   assert.ok(!JSON.stringify(data).includes('fake-test-secret'));
 });

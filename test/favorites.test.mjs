@@ -35,12 +35,12 @@ test('selects only westbound M1/M2 metro departures', () => {
   const out=selectBoardDepartures(FAVORITES[1],stops);
   assert.deepEqual(out.map(d=>d.destination),['Kivenlahti','Tapiola']);
 });
-test('tram 6 shows only line 6 in either direction until platform is clarified', () => {
+test('tram 6 shows only Eiranranta-bound departures', () => {
   const stops=[{departures:[
     {line:'6',destination:'Eiranranta',departure:'2026-11-24T15:02:00.000Z'},
     {line:'6',destination:'Arabia',departure:'2026-11-24T15:03:00.000Z'},
     {line:'7',destination:'Länsisatama',departure:'2026-11-24T15:04:00.000Z'}]}];
-  assert.equal(selectBoardDepartures(FAVORITES[2],stops).length,2);
+  assert.deepEqual(selectBoardDepartures(FAVORITES[2],stops).map(dep=>dep.destination),['Eiranranta']);
 });
 test('demo outputs coherent groups and is future-dated and not realtime',()=>{
   const now=Date.UTC(2026,10,24,13,0,0);

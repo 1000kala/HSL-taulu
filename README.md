@@ -24,9 +24,9 @@ Kotitaulun ensisijainen näkymä on asetettu seuraaville lähdöille:
 
 - **59** Junatie (H2179) → **Malminkartano**. Huomioidaan myös uuden päätepysäkin nimi Sydänpuunpuisto.
 - **M1 ja M2** Sörnäisten metroasema → **länteen**, eli Kivenlahden/Tapiolan (tai vastaavan läntisen päätepysäkin) suuntaan.
-- **Raitiovaunu 6** Sörnäinen (M) → **molemmat ajosuunnat**, koska pyydettyä laiturinumeroa 12 ei ole vielä varmistettu raitiovaunulaituriksi. Suunta näkyy rivin määränpäässä (Arabia tai Eiranranta).
+- **Raitiovaunu 6** Sörnäinen (M) → **vain Eiranrannan suuntaan**. Lähdöt suodatetaan linjanumeron ja Eiranranta-määränpään perusteella.
 
-Kun Digitransitin API-avain on käytössä, ohjelma hakee pysäkkien varsinaiset HSL-tunnukset nimellä ja suodattaa lähdöt linjan sekä määränpään perusteella. Raitiovaunun täsmällinen laituri ja koko reaaliaikaisen tietovirran toimivuus vaativat tarkistuksen oikealla API-yhteydellä. Pelkässä demotilassa näyttö on toimiva, mutta ajat ovat *keksittyjä esimerkkejä*.
+Kun Digitransitin API-avain on käytössä, ohjelma hakee pysäkkien varsinaiset HSL-tunnukset nimellä ja suodattaa lähdöt linjan sekä määränpään perusteella. Raitiovaunun täsmällinen laituri sekä live-lähtöjen oikeellisuus tarkistetaan oikealla API-yhteydellä. Pelkässä demotilassa näyttö on toimiva, mutta ajat ovat *keksittyjä esimerkkejä*.
 
 ## Ohjelman ensimmäinen versio
 

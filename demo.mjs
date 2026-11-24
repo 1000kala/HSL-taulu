@@ -32,8 +32,7 @@ export function demoFavorites(now = Date.now()) {
       ['M2', 'Tapiola', 14], ['M1', 'Kivenlahti', 18],
     ],
     tram6: [
-      ['6', 'Eiranranta', 5], ['6', 'Arabia', 9], ['6', 'Eiranranta', 16],
-      ['6', 'Arabia', 21],
+      ['6', 'Eiranranta', 5], ['6', 'Eiranranta', 16], ['6', 'Eiranranta', 29],
     ],
   };
   return FAVORITES.map(board => ({
