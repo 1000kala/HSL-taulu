@@ -14,6 +14,6 @@ Tähän tiedostoon kirjataan tehdyt testit ja niiden tulokset. Vaatimusten tarka
 
 ## Testikertojen kirjaaminen
 
-Kun testi suoritetaan, merkitään tähän päivämäärä, testattu sovellusversio tai commit-tunniste, vaatimustunniste (V1–V3), testausolosuhteet, havaittu tulos sekä hyväksytty/hylätty-tilanne. Mahdolliset virheet ja korjausten uusintatestit kirjataan samaan dokumenttiin.
+Testi 23.11.2026 - En päässyt enää Digitransit-palveluun hakemaan API-avaintani, koska sivusto näytti erroria useilla eri koodeilla. Loin ChatGPT:llä demoversion ja se täytti kaikki vaatimustunnukseni.
 
-**Huomautus:** V3 on alkuperäisessä määrittelyssä mukana, mutta rajauksen mukaan vähimmäiskokonaisuus koskee HSL-lähtöaikoja. Jos sääominaisuutta ei toteuteta, sen testaustilaan voidaan myöhemmin merkitä ”Ei toteutettu / rajattu pois” perusteluineen.
+Testi 24.11.2026 - Sain API-avaimen haltuuni ja lisäsin sen projektikansion .env tiedostoon. Vaatimustukset täyttyivät myös oikeassa versiossa.
