@@ -8,9 +8,9 @@ Tähän tiedostoon kirjataan tehdyt testit ja niiden tulokset. Vaatimusten tarka
 
 | Vaatimustunniste | Suunniteltu tarkistus | Tila | Toteutunut tulos |
 | --- | --- | --- | --- |
-| V1 | Avaa taulu selaimessa ja tarkista, että lähtöajat päivittyvät ja muutokset näkyvät. | Ei testattu | Ei tulosta |
-| V2 | Tarkista, että näkymässä näkyy useamman kuin yhden linjan lähtöajat samanaikaisesti. | Ei testattu | Ei tulosta |
-| V3 | Jos sääominaisuus toteutetaan, vertaa näkyvää lämpötilaa ja säätietoa tietolähteeseen. | Ei testattu | Ei tulosta |
+| V1 | Avaa taulu selaimessa ja tarkista, että lähtöajat päivittyvät ja muutokset näkyvät. | Testattu | Toimii  |
+| V2 | Tarkista, että näkymässä näkyy useamman kuin yhden linjan lähtöajat samanaikaisesti. | Testattu | Toimii  |
+| V3 | Jos sääominaisuus toteutetaan, vertaa näkyvää lämpötilaa ja säätietoa tietolähteeseen. | Testattu| Toimii |
 
 ## Testikertojen kirjaaminen
 
